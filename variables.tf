@@ -1,5 +1,5 @@
 locals {
-  postfix       = var.name_postfix != "" ? var.name_postfix : random_id.id.hex
+  postfix = var.name_postfix != "" ? var.name_postfix : random_id.id.hex
   alertmanager = defaults(var.alertmanager, {
     memory       = 128
     docker_image = "prom/alertmanager:v0.23.0"
