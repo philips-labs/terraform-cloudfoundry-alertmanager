@@ -5,5 +5,5 @@ output "alertmanager_app_id" {
 
 output "alertmanager_internal_endpoint" {
   description = "Internal route of alertmanager"
-  value       = "${cloudfoundry_route.alertmanager_internal.endpoint}:9093"
+  value       = "${cloudfoundry_route.alertmanager_internal.endpoint}:${local.alertmanager_default_port}"
 }

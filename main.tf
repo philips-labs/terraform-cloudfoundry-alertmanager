@@ -1,9 +1,8 @@
 locals {
-  alertmanager_routes = [cloudfoundry_route.alertmanager_internal.id]
-
-  webhook_url = var.teams_incoming_webhook_url != "" ? "http://${cloudfoundry_route.prometheusmsteams_internal[0].endpoint}:2000/alertmanager" : "http://localhost:5001"
-
-  alertmanager_config = local.alertmanager.config_file == "" ? templatefile("${path.module}/templates/alertmanager.yml", { url = local.webhook_url }) : local.alertmanager.config_file
+  alertmanager_routes       = [cloudfoundry_route.alertmanager_internal.id]
+  webhook_url               = var.teams_incoming_webhook_url != "" ? "http://${cloudfoundry_route.prometheusmsteams_internal[0].endpoint}:2000/alertmanager" : "http://localhost:5001"
+  alertmanager_config       = local.alertmanager.config_file == "" ? templatefile("${path.module}/templates/alertmanager.yml", { url = local.webhook_url }) : local.alertmanager.config_file
+  alertmanager_default_port = "9093"
 }
 
 resource "cloudfoundry_app" "prometheusmsteams" {
@@ -72,9 +71,9 @@ resource "cloudfoundry_network_policy" "prometheusmsteams" {
 
 resource "cloudfoundry_network_policy" "alertmanager" {
   policy {
-    source_app      = var.alertsource_app_id
+    source_app      = var.alerts_source_app_id
     destination_app = cloudfoundry_app.alertmanager.id
     protocol        = "tcp"
-    port            = "9093"
+    port            = local.alertmanager_default_port
   }
 }

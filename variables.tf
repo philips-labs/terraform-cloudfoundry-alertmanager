@@ -16,7 +16,7 @@ variable "cf_space_id" {
   type        = string
 }
 
-variable "alertsource_app_id" {
+variable "alerts_source_app_id" {
   description = "Cloudfoundry app id that will send the alerts. E.g Thanos, Prometheus.."
   type        = string
 }
