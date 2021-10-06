@@ -57,7 +57,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alertmanager"></a> [alertmanager](#input\_alertmanager) | n/a | <pre>object({<br>    docker_image    = optional(string)<br>    memory          = optional(string)<br>    config_file     = optional(string)<br>    docker_username = optional(string)<br>    docker_password = optional(string)<br>  })</pre> | `{}` | no |
-| <a name="input_alerts_source_app_id"></a> [alertsource\_app\_id](#input\_alertsource\_app\_id) | Cloudfoundry app id that will send the alerts. E.g Thanos, Prometheus.. | `string` | n/a | yes |
+| <a name="input_alerts_source_app_id"></a> [alerts\_source\_app\_id](#input\_alerts\_source\_app\_id) | Cloudfoundry app id that will send the alerts. E.g Thanos, Prometheus.. | `string` | n/a | yes |
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | Cloudfoundry SPACE id to use for deploying the alertmanager components. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Pass environment variable to the app | `map(any)` | `{}` | no |
 | <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the app names, hostname, etc. Prevents namespace clashes | `string` | `""` | no |
@@ -69,6 +69,7 @@ No modules.
 |------|-------------|
 | <a name="output_alertmanager_app_id"></a> [alertmanager\_app\_id](#output\_alertmanager\_app\_id) | App id of Alertmanager |
 | <a name="output_alertmanager_internal_endpoint"></a> [alertmanager\_internal\_endpoint](#output\_alertmanager\_internal\_endpoint) | Internal route of alertmanager |
+
 <!--- END_TF_DOCS --->
 
 # Contact / Getting help
