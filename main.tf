@@ -22,7 +22,7 @@ resource "cloudfoundry_app" "prometheusmsteams" {
   }
 
   dynamic "service_binding" {
-    for_each = var.service_bindings
+    for_each = var.prometheusmsteams_service_bindings
 
     content {
       service_instance = service_binding.value.service_instance
@@ -60,7 +60,7 @@ resource "cloudfoundry_app" "alertmanager" {
   }
 
   dynamic "service_binding" {
-    for_each = var.service_bindings
+    for_each = var.alertmanager_service_bindings
 
     content {
       service_instance = service_binding.value.service_instance
