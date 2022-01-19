@@ -20,6 +20,14 @@ resource "cloudfoundry_app" "prometheusmsteams" {
   routes {
     route = cloudfoundry_route.prometheusmsteams_internal[count.index].id
   }
+
+  dynamic "service_binding" {
+    for_each = var.service_bindings
+
+    content {
+      service_instance = service_binding.value.service_instance
+    }
+  }
 }
 
 resource "cloudfoundry_route" "prometheusmsteams_internal" {
@@ -48,6 +56,14 @@ resource "cloudfoundry_app" "alertmanager" {
     for_each = local.alertmanager_routes
     content {
       route = routes.value
+    }
+  }
+
+  dynamic "service_binding" {
+    for_each = var.service_bindings
+
+    content {
+      service_instance = service_binding.value.service_instance
     }
   }
 }

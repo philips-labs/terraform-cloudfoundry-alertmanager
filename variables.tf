@@ -49,3 +49,9 @@ variable "alertmanager" {
   })
   default = {}
 }
+
+variable "service_bindings" {
+  type        = list(object({ service_instance = string }))
+  description = "A list of service instances that should be bound to the apps"
+  default     = []
+}
