@@ -52,12 +52,12 @@ variable "alertmanager" {
 
 variable "prometheusmsteams_service_bindings" {
   type        = list(object({ service_instance = string }))
-  description = "A list of service instances that should be bound to the apps"
+  description = "A list of service instances that should be bound to the prometheusmsteams"
   default     = []
 }
 
 variable "alertmanager_service_bindings" {
   type        = list(object({ service_instance = string }))
-  description = "A list of service instances that should be bound to the apps"
+  description = "A list of service instances that should be bound to the alertmanager"
   default     = []
 }
