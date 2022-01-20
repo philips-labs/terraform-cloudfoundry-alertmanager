@@ -57,10 +57,12 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alertmanager"></a> [alertmanager](#input\_alertmanager) | n/a | <pre>object({<br>    docker_image    = optional(string)<br>    memory          = optional(string)<br>    config_file     = optional(string)<br>    docker_username = optional(string)<br>    docker_password = optional(string)<br>  })</pre> | `{}` | no |
+| <a name="input_alertmanager_service_bindings"></a> [alertmanager\_service\_bindings](#input\_alertmanager\_service\_bindings) | A list of service instances that should be bound to the alertmanager | `list(object({ service_instance = string }))` | `[]` | no |
 | <a name="input_alerts_source_app_id"></a> [alerts\_source\_app\_id](#input\_alerts\_source\_app\_id) | Cloudfoundry app id that will send the alerts. E.g Thanos, Prometheus.. | `string` | n/a | yes |
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | Cloudfoundry SPACE id to use for deploying the alertmanager components. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Pass environment variable to the app | `map(any)` | `{}` | no |
 | <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the app names, hostname, etc. Prevents namespace clashes | `string` | `""` | no |
+| <a name="input_prometheusmsteams_service_bindings"></a> [prometheusmsteams\_service\_bindings](#input\_prometheusmsteams\_service\_bindings) | A list of service instances that should be bound to the prometheusmsteams | `list(object({ service_instance = string }))` | `[]` | no |
 | <a name="input_teams_incoming_webhook_url"></a> [teams\_incoming\_webhook\_url](#input\_teams\_incoming\_webhook\_url) | Teams incoming webhook URL | `string` | `""` | no |
 
 ## Outputs
