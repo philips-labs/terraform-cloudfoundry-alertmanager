@@ -9,7 +9,7 @@ resource "cloudfoundry_app" "prometheusmsteams" {
   count        = var.teams_incoming_webhook_url != "" ? 1 : 0
   name         = "tf-prometheusmsteams-${local.postfix}"
   space        = var.cf_space_id
-  docker_image = "quay.io/prometheusmsteams/prometheus-msteams"
+  docker_image = var.prometheusmsteams_docker_image
   memory       = 64
   disk_quota   = 1024
   environment = {

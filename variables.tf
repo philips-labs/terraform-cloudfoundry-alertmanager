@@ -27,6 +27,12 @@ variable "name_postfix" {
   default     = ""
 }
 
+variable "prometheusmsteams_docker_image" {
+  type        = string
+  description = "The docker image to use for the Prometheus MS Teams app"
+  default     = "quay.io/prometheusmsteams/prometheus-msteams:latest"
+}
+
 variable "teams_incoming_webhook_url" {
   description = "Teams incoming webhook URL"
   default     = ""
