@@ -44,7 +44,7 @@ variable "alertmanager" {
   type = object({
     docker_image    = optional(string, "prom/alertmanager:v0.23.0")
     memory          = optional(number, 128)
-    config_file     = optional(string)
+    config_file     = optional(string, "")
     docker_username = optional(string)
     docker_password = optional(string)
   })
