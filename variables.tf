@@ -1,10 +1,5 @@
 locals {
   postfix = var.name_postfix != "" ? var.name_postfix : random_id.id.hex
-  alertmanager = defaults(var.alertmanager, {
-    memory       = 128
-    docker_image = "prom/alertmanager:v0.23.0"
-    config_file  = ""
-  })
 }
 
 resource "random_id" "id" {
@@ -47,8 +42,8 @@ variable "environment" {
 
 variable "alertmanager" {
   type = object({
-    docker_image    = optional(string)
-    memory          = optional(string)
+    docker_image    = optional(string, "prom/alertmanager:v0.23.0")
+    memory          = optional(number, 128)
     config_file     = optional(string)
     docker_username = optional(string)
     docker_password = optional(string)
